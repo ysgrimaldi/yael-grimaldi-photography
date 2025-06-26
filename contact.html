@@ -46,9 +46,6 @@
       display: none;
       padding-left: 20px;
     }
-    nav .submenu a {
-      font-size: 0.95em;
-    }
     nav a:hover, nav .submenu a:hover {
       background: #ddd;
     }
@@ -131,11 +128,7 @@
       const body = document.body;
       const icon = document.getElementById('menuIcon');
       body.classList.toggle('nav-open');
-      if (body.classList.contains('nav-open')) {
-        icon.innerHTML = '✕';
-      } else {
-        icon.innerHTML = '&#9776;';
-      }
+      icon.innerHTML = body.classList.contains('nav-open') ? '✕' : '&#9776;';
     }
 
     function toggleSubmenu(event) {
