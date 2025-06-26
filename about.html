@@ -85,15 +85,15 @@
   <div class="menu-icon" onclick="toggleNav()" id="menuIcon">&#9776;</div>
 
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html" onclick="closeNav()">Home</a>
     <a href="#" class="expandable" onclick="toggleSubmenu(event)">Works</a>
     <div class="submenu" id="worksSubmenu">
-      <a href="travel.html">Travel</a>
-      <a href="events.html">Events</a>
-      <a href="portraits.html">Portraits</a>
+      <a href="travel.html" onclick="closeNav()">Travel</a>
+      <a href="events.html" onclick="closeNav()">Events</a>
+      <a href="portraits.html" onclick="closeNav()">Portraits</a>
     </div>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="about.html" onclick="closeNav()">About</a>
+    <a href="contact.html" onclick="closeNav()">Contact</a>
   </nav>
 
   <header>
@@ -113,6 +113,11 @@
       const icon = document.getElementById('menuIcon');
       body.classList.toggle('nav-open');
       icon.innerHTML = body.classList.contains('nav-open') ? '✕' : '&#9776;';
+    }
+
+    function closeNav() {
+      document.body.classList.remove('nav-open');
+      document.getElementById('menuIcon').innerHTML = '&#9776;';
     }
 
     function toggleSubmenu(event) {
