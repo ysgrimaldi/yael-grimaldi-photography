@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YAEL GRIMALDI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #000;
+    }
+    header {
+      position: relative;
+      padding: 20px;
+      text-align: center;
+      z-index: 1100;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    .menu-icon {
+      font-size: 2em;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1101;
+      background: #fff;
+      padding: 5px 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: -200px;
+      width: 200px;
+      height: 100%;
+      background: #f5f5f5;
+      padding-top: 100px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    nav a {
+      display: block;
+      padding: 10px 20px;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 1px solid #ddd;
+    }
+    nav .submenu {
+      display: none;
+      padding-left: 20px;
+    }
+    nav .submenu a {
+      font-size: 0.95em;
+    }
+    nav a:hover, nav .submenu a:hover {
+      background: #ddd;
+    }
+    nav a.expandable::after {
+      content: ' ▸';
+      float: right;
+    }
+    nav a.expandable.expanded::after {
+      content: ' ▾';
+    }
+    .nav-open nav {
+      left: 0;
+    }
+    .hero {
+      background: url('heroimage.jpg') center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero h2 {
+      background: rgba(255,255,255,0.7);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      padding: 20px;
+    }
+    .gallery a {
+      position: relative;
+      display: block;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      text-align: center;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+    .gallery a:hover {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+    .gallery a span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #000;
+      font-size: 1.1em;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+    .bottom-section {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .bottom-section p {
+      margin: 10px 0;
+    }
+    .bottom-section a {
+      color: #bbb;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .bottom-section a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-icon" onclick="toggleNav()" id="menuIcon">&#9776;</div>
+
+  <header>
+    <h1>YAEL GRIMALDI</h1>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#" class="expandable" onclick="toggleSubmenu(event)">Works</a>
+    <div class="submenu" id="worksSubmenu">
+      <a href="travel.html">Travel</a>
+      <a href="events.html">Events</a>
+      <a href="portraits.html">Portraits</a>
+    </div>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Capturing Moments, Telling Stories</h2>
+  </section>
+
+  <section class="gallery" id="works">
+    <a href="travel.html">
+      <img src="travelthumbnail.jpg" alt="Travel Category">
+      <span>Travel</span>
+    </a>
+    <a href="events.html">
+      <img src="eventsthumbnail.jpg" alt="Events Category">
+      <span>Events</span>
+    </a>
+    <a href="portraits.html">
+      <img src="portraitsthumbnail.jpg" alt="Portraits Category">
+      <span>Portraits</span>
+    </a>
+  </section>
+
+  <section class="bottom-section">
+    <p>&copy; 2025 YAEL GRIMALDI. All rights reserved.</p>
+    <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
+  </section>
+
+  <script>
+    function toggleNav() {
+      const body = document.body;
+      const icon = document.getElementById('menuIcon');
+      body.classList.toggle('nav-open');
+      if (body.classList.contains('nav-open')) {
+        icon.innerHTML = '✕';
+      } else {
+        icon.innerHTML = '&#9776;';
+      }
+    }
+
+    function toggleSubmenu(event) {
+      event.preventDefault();
+      const submenu = document.getElementById('worksSubmenu');
+      const link = event.target;
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+      link.classList.toggle('expanded');
+    }
+  </script>
+</body>
+</html>
