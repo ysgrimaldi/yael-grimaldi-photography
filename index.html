@@ -143,15 +143,15 @@
   </header>
 
   <nav>
-    <a href="#">Home</a>
+    <a href="index.html" onclick="closeNav()">Home</a>
     <a href="#" class="expandable" onclick="toggleSubmenu(event)">Works</a>
     <div class="submenu" id="worksSubmenu">
-      <a href="travel.html">Travel</a>
-      <a href="events.html">Events</a>
-      <a href="portraits.html">Portraits</a>
+      <a href="travel.html" onclick="closeNav()">Travel</a>
+      <a href="events.html" onclick="closeNav()">Events</a>
+      <a href="portraits.html" onclick="closeNav()">Portraits</a>
     </div>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="about.html" onclick="closeNav()">About</a>
+    <a href="contact.html" onclick="closeNav()">Contact</a>
   </nav>
 
   <section class="hero">
@@ -183,11 +183,12 @@
       const body = document.body;
       const icon = document.getElementById('menuIcon');
       body.classList.toggle('nav-open');
-      if (body.classList.contains('nav-open')) {
-        icon.innerHTML = '✕';
-      } else {
-        icon.innerHTML = '&#9776;';
-      }
+      icon.innerHTML = body.classList.contains('nav-open') ? '✕' : '&#9776;';
+    }
+
+    function closeNav() {
+      document.body.classList.remove('nav-open');
+      document.getElementById('menuIcon').innerHTML = '&#9776;';
     }
 
     function toggleSubmenu(event) {
