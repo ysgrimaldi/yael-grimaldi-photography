@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About | YAEL GRIMALDI</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -45,9 +45,6 @@
     nav .submenu {
       display: none;
       padding-left: 20px;
-    }
-    nav .submenu a {
-      font-size: 0.95em;
     }
     nav a:hover, nav .submenu a:hover {
       background: #ddd;
@@ -115,11 +112,7 @@
       const body = document.body;
       const icon = document.getElementById('menuIcon');
       body.classList.toggle('nav-open');
-      if (body.classList.contains('nav-open')) {
-        icon.innerHTML = '✕';
-      } else {
-        icon.innerHTML = '&#9776;';
-      }
+      icon.innerHTML = body.classList.contains('nav-open') ? '✕' : '&#9776;';
     }
 
     function toggleSubmenu(event) {
