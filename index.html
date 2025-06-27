@@ -13,18 +13,15 @@
       background: #fff;
       color: #000;
     }
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+    #page-header {
+      position: relative;
       padding: 20px;
       background: #fff;
       text-align: center;
       z-index: 1100;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
-    header h1 {
+    #page-header h1 {
       margin: 0;
       font-size: 2em;
       font-weight: 300 !important;
@@ -32,7 +29,7 @@
     .menu-icon {
       font-size: 2em;
       cursor: pointer;
-      position: fixed;
+      position: absolute;
       top: 20px;
       left: 20px;
       z-index: 1101;
@@ -80,17 +77,29 @@
       left: 0;
     }
     .hero {
-      background: url('heroimage.jpg') center/cover no-repeat;
+      position: relative;
       height: 60vh;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       margin-top: 80px;
     }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
     .hero h2 {
+      position: relative;
       color: white;
       padding: 20px;
       font-weight: 300 !important;
+      z-index: 1;
     }
     .gallery {
       display: grid;
@@ -148,7 +157,7 @@
 <body>
   <div class="menu-icon" onclick="toggleNav()" id="menuIcon">&#9776;</div>
 
-  <header>
+  <header id="page-header">
     <h1>YAEL GRIMALDI</h1>
   </header>
 
@@ -165,6 +174,7 @@
   </nav>
 
   <section class="hero">
+    <img src="heroimage.jpg" alt="Hero" class="hero-img">
     <h2>Capturing Moments, Telling Stories</h2>
   </section>
 
