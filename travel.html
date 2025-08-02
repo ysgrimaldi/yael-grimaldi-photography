@@ -92,19 +92,25 @@
     .gallery {
       max-width: 1400px;
       margin: 0 auto 60px;
-      padding: 0 20px;
+      padding: 0 15px; /* Equal left/right gutter */
       overflow: hidden;
       clear: both;
     }
 
     .grid-sizer,
     .grid-item {
-      width: 33.333%;
+      width: calc(33.333% - 10px); /* Account for gutter spacing */
     }
 
     .grid-item {
       float: left;
-      margin-bottom: 20px;
+      margin-bottom: 15px; /* Consistent vertical spacing */
+      margin-right: 15px;   /* Horizontal gutter spacing */
+    }
+
+    /* Remove right margin on every 3rd item to prevent wrap gap */
+    .grid-item:nth-child(3n+3) {
+      margin-right: 0;
     }
 
     .grid-item img {
@@ -117,7 +123,15 @@
     @media (max-width: 800px) {
       .grid-sizer,
       .grid-item {
-        width: 50%;
+        width: calc(50% - 7.5px);
+      }
+
+      .grid-item:nth-child(2n+2) {
+        margin-right: 0;
+      }
+
+      .grid-item:nth-child(3n+3) {
+        margin-right: 15px; /* Reset for mobile */
       }
     }
 
@@ -125,6 +139,7 @@
       .grid-sizer,
       .grid-item {
         width: 100%;
+        margin-right: 0;
       }
     }
   </style>
@@ -163,7 +178,7 @@
       new Masonry(grid, {
         itemSelector: '.grid-item',
         columnWidth: '.grid-sizer',
-        gutter: 15, // ✅ reduced to prevent overflow
+        gutter: 15, // Matches margin spacing
         fitWidth: true,
         percentPosition: true
       });
@@ -175,11 +190,7 @@
       const body = document.body;
       const icon = document.getElementById('menuIcon');
       body.classList.toggle('nav-open');
-      if (body.classList.contains('nav-open')) {
-        icon.innerHTML = '✕';
-      } else {
-        icon.innerHTML = '&#9776;';
-      }
+      icon.innerHTML = body.classList.contains('nav-open') ? '✕' : '&#9776;';
     }
 
     function toggleSubmenu(event) {
