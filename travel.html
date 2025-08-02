@@ -8,7 +8,7 @@
   <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
   <style>
-    /* ✅ GLOBAL RESET + BOX-SIZING */
+    /* ✅ GLOBAL RESET */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -88,23 +88,23 @@
       margin-bottom: 10px;
     }
 
-    /* ✅ MASONRY GALLERY */
+    /* ✅ MASONRY GALLERY LAYOUT */
     .gallery {
       max-width: 1400px;
       margin: 0 auto 60px;
-      padding: 0 15px;
-      overflow: hidden;
+      padding: 15px; /* even padding all around */
+      overflow: visible;
       clear: both;
     }
 
     .grid-sizer,
     .grid-item {
-      width: 33.333%;
+      width: calc(33.333% - 10px); /* adjust for 15px gutter between columns */
     }
 
     .grid-item {
       float: left;
-      margin-bottom: 15px; /* Only vertical spacing */
+      margin-bottom: 15px;
     }
 
     .grid-item img {
@@ -112,12 +112,13 @@
       display: block;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow: visible;
     }
 
     @media (max-width: 800px) {
       .grid-sizer,
       .grid-item {
-        width: 50%;
+        width: calc(50% - 7.5px);
       }
     }
 
@@ -163,7 +164,7 @@
       new Masonry(grid, {
         itemSelector: '.grid-item',
         columnWidth: '.grid-sizer',
-        gutter: 15, // Masonry handles gutter!
+        gutter: 15, // Matches padding and margin
         fitWidth: true,
         percentPosition: true
       });
