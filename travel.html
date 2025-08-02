@@ -92,25 +92,19 @@
     .gallery {
       max-width: 1400px;
       margin: 0 auto 60px;
-      padding: 0 15px; /* Equal left/right gutter */
+      padding: 0 15px;
       overflow: hidden;
       clear: both;
     }
 
     .grid-sizer,
     .grid-item {
-      width: calc(33.333% - 10px); /* Account for gutter spacing */
+      width: 33.333%;
     }
 
     .grid-item {
       float: left;
-      margin-bottom: 15px; /* Consistent vertical spacing */
-      margin-right: 15px;   /* Horizontal gutter spacing */
-    }
-
-    /* Remove right margin on every 3rd item to prevent wrap gap */
-    .grid-item:nth-child(3n+3) {
-      margin-right: 0;
+      margin-bottom: 15px; /* Only vertical spacing */
     }
 
     .grid-item img {
@@ -123,15 +117,7 @@
     @media (max-width: 800px) {
       .grid-sizer,
       .grid-item {
-        width: calc(50% - 7.5px);
-      }
-
-      .grid-item:nth-child(2n+2) {
-        margin-right: 0;
-      }
-
-      .grid-item:nth-child(3n+3) {
-        margin-right: 15px; /* Reset for mobile */
+        width: 50%;
       }
     }
 
@@ -139,7 +125,6 @@
       .grid-sizer,
       .grid-item {
         width: 100%;
-        margin-right: 0;
       }
     }
   </style>
@@ -178,7 +163,7 @@
       new Masonry(grid, {
         itemSelector: '.grid-item',
         columnWidth: '.grid-sizer',
-        gutter: 15, // Matches margin spacing
+        gutter: 15, // Masonry handles gutter!
         fitWidth: true,
         percentPosition: true
       });
